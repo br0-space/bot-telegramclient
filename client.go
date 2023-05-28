@@ -13,13 +13,6 @@ type Client struct {
 	Cfg ConfigStruct
 }
 
-type sendMessageResponse struct {
-	Ok          bool   `json:"ok"`
-	Result      bool   `json:"result"`
-	ErrorCode   int    `json:"error_code"`
-	Description string `json:"description"`
-}
-
 func NewClient(config ConfigStruct) *Client {
 	return &Client{
 		Log: logger.New(),
