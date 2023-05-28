@@ -1,15 +1,5 @@
 package telegramclient
 
-type ConfigStruct struct {
-	ApiKey              string
-	WebhookURL          string
-	BaseUrl             string
-	EndpointSetWebhook  string
-	EndpointSendMessage string
-	EndpointSendPhoto   string
-	ChatID              int64
-}
-
 type ClientInterface interface {
 	SendMessage(chatID int64, messageOut MessageStruct) error
 }
@@ -31,5 +21,19 @@ type MessageStruct struct {
 type MessageResponseBodyStruct struct {
 	Ok          bool   `json:"ok"`
 	ErrorCode   int16  `json:"error_code"`
+	Description string `json:"description"`
+}
+
+type setWebhookURLResponse struct {
+	Ok          bool   `json:"ok"`
+	Result      bool   `json:"result"`
+	ErrorCode   int    `json:"error_code"`
+	Description string `json:"description"`
+}
+
+type sendMessageResponse struct {
+	Ok          bool   `json:"ok"`
+	Result      bool   `json:"result"`
+	ErrorCode   int    `json:"error_code"`
 	Description string `json:"description"`
 }
