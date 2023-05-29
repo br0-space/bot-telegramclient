@@ -19,7 +19,7 @@ type WebhookBodyStruct struct {
 }
 
 type WebhookMessageStruct struct {
-	ID      int64                       `json:"message_id"`
+	ID      int64                       `json:"message_id"` //nolint:tagliatelle
 	From    WebhookMessageUserStruct    `json:"from"`
 	Chat    WebhookMessageChatStruct    `json:"chat"`
 	Text    string                      `json:"text"`
@@ -42,20 +42,21 @@ func (m WebhookMessageStruct) TextOrCaption() string {
 
 func (m WebhookMessageStruct) WordCount() int {
 	// Match non-space character sequences.
-	re := regexp.MustCompile(`[\S]+`)
+	re := regexp.MustCompile(`\S+`)
 
 	// Find all matches and return count.
 	results := re.FindAllString(m.TextOrCaption(), -1)
+
 	return len(results)
 }
 
 type WebhookMessageUserStruct struct {
 	ID           int64  `json:"id"`
-	IsBot        bool   `json:"is_bot"`
-	FirstName    string `json:"first_name"`
-	LastName     string `json:"last_name"`
+	IsBot        bool   `json:"is_bot"`     //nolint:tagliatelle
+	FirstName    string `json:"first_name"` //nolint:tagliatelle
+	LastName     string `json:"last_name"`  //nolint:tagliatelle
 	Username     string `json:"username"`
-	LanguageCode string `json:"language_code"`
+	LanguageCode string `json:"language_code"` //nolint:tagliatelle
 }
 
 func (u WebhookMessageUserStruct) UsernameOrName() string {
@@ -81,9 +82,9 @@ type WebhookMessageChatStruct struct {
 }
 
 type WebhookMessagePhotoStruct struct {
-	FileID       string `json:"file_id"`
-	FileUniqueID string `json:"file_unique_id"`
-	FileSize     int    `json:"file_size"`
+	FileID       string `json:"file_id"`        //nolint:tagliatelle
+	FileUniqueID string `json:"file_unique_id"` //nolint:tagliatelle
+	FileSize     int    `json:"file_size"`      //nolint:tagliatelle
 	Width        int    `json:"width"`
 	Height       int    `json:"height"`
 }

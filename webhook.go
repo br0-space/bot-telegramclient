@@ -3,9 +3,10 @@ package telegramclient
 import (
 	"encoding/json"
 	"fmt"
-	logger "github.com/br0-space/bot-logger"
 	"net/http"
 	"net/url"
+
+	logger "github.com/br0-space/bot-logger"
 )
 
 type Handler struct {
@@ -35,6 +36,7 @@ func (h *Handler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		h.log.Error(err)
 		http.Error(res, err.Error(), status)
+
 		return
 	}
 
@@ -61,6 +63,7 @@ func (h *Handler) parseRequest(req *http.Request) (*WebhookMessageStruct, int, e
 func (h *Handler) setWebhookURL() {
 	if h.cfg.WebhookURL == "" {
 		h.log.Info("Not setting Telegram webhook URL")
+
 		return
 	}
 
@@ -70,7 +73,7 @@ func (h *Handler) setWebhookURL() {
 
 	h.log.Debug("Sending POST request to", apiUrl)
 
-	if resp, err := http.PostForm(apiUrl, url.Values{
+	if resp, err := http.PostForm(apiUrl, url.Values{ //nolint:gosec
 		"url": {h.cfg.WebhookURL},
 	}); err != nil {
 		h.log.Panic("Unable to set Telegram webhook URL:", err)

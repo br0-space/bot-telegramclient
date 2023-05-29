@@ -4,8 +4,9 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	logger "github.com/br0-space/bot-logger"
 	"net/http"
+
+	logger "github.com/br0-space/bot-logger"
 )
 
 type Client struct {
@@ -38,7 +39,7 @@ func (c Client) SendMessage(chatID int64, message MessageStruct) error {
 
 	c.Log.Debugf("Sending POST request to %s", url)
 
-	response, err := http.Post(url, "application/json", bytes.NewBuffer(requestBytes))
+	response, err := http.Post(url, "application/json", bytes.NewBuffer(requestBytes)) //nolint:gosec
 	if err != nil {
 		return err
 	}
@@ -53,6 +54,7 @@ func (c Client) SendMessage(chatID int64, message MessageStruct) error {
 	if err = json.NewDecoder(response.Body).Decode(responseBody); err != nil {
 		return fmt.Errorf("SendMessage failed with %s: unable to decode response body", response.Status)
 	}
+
 	return fmt.Errorf("SendMessage failed with %d: %s", responseBody.ErrorCode, responseBody.Description)
 }
 

@@ -1,8 +1,9 @@
 package telegramclient_test
 
 import (
-	telegramclient "github.com/br0-space/bot-telegramclient"
 	"testing"
+
+	telegramclient "github.com/br0-space/bot-telegramclient"
 )
 
 type escapeMarkdownTest struct {
