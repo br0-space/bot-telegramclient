@@ -1,9 +1,9 @@
 package telegramclient
 
 type ConfigStruct struct {
-	ApiKey              string
+	APIKey              string
 	WebhookURL          string
-	BaseUrl             string
+	BaseURL             string
 	EndpointSetWebhook  string
 	EndpointSendMessage string
 	EndpointSendPhoto   string

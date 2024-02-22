@@ -48,7 +48,28 @@ func (h *Handler) parseRequest(req *http.Request) (*WebhookMessageStruct, int, e
 		return nil, http.StatusMethodNotAllowed, fmt.Errorf("method not allowed: %s (actual) != POST (expected)", req.Method)
 	}
 
-	body := &WebhookBodyStruct{}
+	body := &WebhookBodyStruct{
+		Message: WebhookMessageStruct{
+			ID: 0,
+			From: WebhookMessageUserStruct{
+				ID:           0,
+				IsBot:        false,
+				FirstName:    "",
+				LastName:     "",
+				Username:     "",
+				LanguageCode: "",
+			},
+			Chat: WebhookMessageChatStruct{
+				ID:       0,
+				Type:     "",
+				Username: "",
+			},
+			Text:    "",
+			Date:    0,
+			Photo:   []WebhookMessagePhotoStruct{},
+			Caption: "",
+		},
+	}
 	if err := json.NewDecoder(req.Body).Decode(body); err != nil {
 		return nil, http.StatusBadRequest, fmt.Errorf("unable to decode request body: %s", err.Error())
 	}
@@ -69,16 +90,21 @@ func (h *Handler) setWebhookURL() {
 
 	h.log.Info("Setting Telegram webhook URL to", h.cfg.WebhookURL)
 
-	apiUrl := fmt.Sprintf(h.cfg.BaseUrl, h.cfg.ApiKey) + h.cfg.EndpointSetWebhook
+	apiURL := fmt.Sprintf(h.cfg.BaseURL, h.cfg.APIKey) + h.cfg.EndpointSetWebhook
 
-	h.log.Debug("Sending POST request to", apiUrl)
+	h.log.Debug("Sending POST request to", apiURL)
 
-	if resp, err := http.PostForm(apiUrl, url.Values{ //nolint:gosec
+	if resp, err := http.PostForm(apiURL, url.Values{ //nolint:bodyclose,gosec
 		"url": {h.cfg.WebhookURL},
 	}); err != nil {
 		h.log.Panic("Unable to set Telegram webhook URL:", err)
 	} else {
-		body := &setWebhookURLResponse{}
+		body := &setWebhookURLResponse{
+			Ok:          false,
+			Result:      false,
+			ErrorCode:   0,
+			Description: "",
+		}
 		if err = json.NewDecoder(resp.Body).Decode(body); err != nil {
 			h.log.Fatal("Unable to decode response body:", err)
 		}

@@ -6,6 +6,6 @@ func NewMockClient() *MockClient {
 	return &MockClient{}
 }
 
-func (c MockClient) SendMessage(chatID int64, messageOut MessageStruct) error {
+func (c MockClient) SendMessage(_ int64, _ MessageStruct) error {
 	return nil
 }
