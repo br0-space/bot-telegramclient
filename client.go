@@ -32,6 +32,7 @@ func (c Client) SendMessage(chatID int64, message MessageStruct) error {
 	message.ChatID = chatID
 
 	url := c.url(message)
+
 	requestBytes, err := json.Marshal(message)
 	if err != nil {
 		return err
@@ -39,7 +40,7 @@ func (c Client) SendMessage(chatID int64, message MessageStruct) error {
 
 	c.Log.Debugf("Sending POST request to %s", url)
 
-	response, err := http.Post(url, "application/json", bytes.NewBuffer(requestBytes)) //nolint:gosec
+	response, err := http.Post(url, "application/json", bytes.NewBuffer(requestBytes)) //nolint:bodyclose,gosec
 	if err != nil {
 		return err
 	}
@@ -50,7 +51,12 @@ func (c Client) SendMessage(chatID int64, message MessageStruct) error {
 		return nil
 	}
 
-	responseBody := &sendMessageResponse{}
+	responseBody := &sendMessageResponse{
+		Ok:          false,
+		Result:      false,
+		ErrorCode:   0,
+		Description: "",
+	}
 	if err = json.NewDecoder(response.Body).Decode(responseBody); err != nil {
 		return fmt.Errorf("SendMessage failed with %s: unable to decode response body", response.Status)
 	}
@@ -61,8 +67,8 @@ func (c Client) SendMessage(chatID int64, message MessageStruct) error {
 func (c Client) url(message MessageStruct) string {
 	switch {
 	case message.Photo != "":
-		return fmt.Sprintf(c.Cfg.BaseUrl, c.Cfg.ApiKey) + c.Cfg.EndpointSendPhoto
+		return fmt.Sprintf(c.Cfg.BaseURL, c.Cfg.APIKey) + c.Cfg.EndpointSendPhoto
 	default:
-		return fmt.Sprintf(c.Cfg.BaseUrl, c.Cfg.ApiKey) + c.Cfg.EndpointSendMessage
+		return fmt.Sprintf(c.Cfg.BaseURL, c.Cfg.APIKey) + c.Cfg.EndpointSendMessage
 	}
 }

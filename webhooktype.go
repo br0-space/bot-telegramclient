@@ -72,7 +72,7 @@ func (u WebhookMessageUserStruct) FirstnameOrUsername() string {
 		return u.FirstName
 	}
 
-	return fmt.Sprintf("@%s", u.Username)
+	return "@" + u.Username
 }
 
 type WebhookMessageChatStruct struct {
