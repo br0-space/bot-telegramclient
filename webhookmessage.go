@@ -2,7 +2,7 @@ package telegramclient
 
 func TestWebhookMessage(text string) WebhookMessageStruct {
 	return WebhookMessageStruct{
-		ID:      123, //nolint:gomnd
+		ID:      123, //nolint:mnd
 		From:    TestWebhookMessageUser(false),
 		Chat:    TestWebhookMessageChat(),
 		Text:    text,
@@ -14,7 +14,7 @@ func TestWebhookMessage(text string) WebhookMessageStruct {
 
 func TestWebhookMessageUser(isBot bool) WebhookMessageUserStruct {
 	return WebhookMessageUserStruct{
-		ID:           456, //nolint:gomnd
+		ID:           456, //nolint:mnd
 		IsBot:        isBot,
 		FirstName:    "",
 		LastName:     "",
@@ -25,7 +25,7 @@ func TestWebhookMessageUser(isBot bool) WebhookMessageUserStruct {
 
 func TestWebhookMessageChat() WebhookMessageChatStruct {
 	return WebhookMessageChatStruct{
-		ID:       789, //nolint:gomnd
+		ID:       789, //nolint:mnd
 		Type:     "",
 		Username: "",
 	}
