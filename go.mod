@@ -1,6 +1,6 @@
 module github.com/br0-space/bot-telegramclient
 
-go 1.19
+go 1.22
 
 require github.com/br0-space/bot-logger v0.1.2
 
