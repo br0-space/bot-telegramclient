@@ -9,7 +9,7 @@ type ConfigStruct struct {
 	EndpointSendPhoto   string
 	// ChatIDs allows filtering incoming webhook messages to specific chats.
 	// If non-empty, only messages from these chat IDs are processed.
-	ChatIDs             []int64
+	ChatIDs []int64
 	// ChatID is kept for backward compatibility; used only if ChatIDs is empty.
-	ChatID              int64
+	ChatID int64
 }

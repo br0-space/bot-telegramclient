@@ -77,12 +77,15 @@ func (h *Handler) parseRequest(req *http.Request) (*WebhookMessageStruct, int, e
 	// Allow filtering by multiple chat IDs if configured; fall back to a single ChatID for backward compatibility.
 	if len(h.cfg.ChatIDs) > 0 {
 		allowed := false
+
 		for _, id := range h.cfg.ChatIDs {
 			if body.Message.Chat.ID == id {
 				allowed = true
+
 				break
 			}
 		}
+
 		if !allowed {
 			return nil, http.StatusOK, fmt.Errorf("chat id mismatch: %d (actual) not in %v (expected)", body.Message.Chat.ID, h.cfg.ChatIDs)
 		}
