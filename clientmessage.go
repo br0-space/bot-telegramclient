@@ -25,6 +25,7 @@ func Message(text string) MessageStruct {
 func MessageToChat(text string, chatID int64) MessageStruct {
 	m := Message(text)
 	m.ChatID = chatID
+
 	return m
 }
 
@@ -41,6 +42,7 @@ func MarkdownMessage(text string) MessageStruct {
 func MarkdownMessageToChat(text string, chatID int64) MessageStruct {
 	m := MarkdownMessage(text)
 	m.ChatID = chatID
+
 	return m
 }
 
@@ -57,6 +59,7 @@ func Reply(text string, messageID int64) MessageStruct {
 func ReplyToChat(text string, messageID int64, chatID int64) MessageStruct {
 	m := Reply(text, messageID)
 	m.ChatID = chatID
+
 	return m
 }
 
@@ -73,6 +76,7 @@ func MarkdownReply(text string, messageID int64) MessageStruct {
 func MarkdownReplyToChat(text string, messageID int64, chatID int64) MessageStruct {
 	m := MarkdownReply(text, messageID)
 	m.ChatID = chatID
+
 	return m
 }
 
@@ -90,6 +94,7 @@ func Photo(photo string, caption string) MessageStruct {
 func PhotoToChat(photo string, caption string, chatID int64) MessageStruct {
 	m := Photo(photo, caption)
 	m.ChatID = chatID
+
 	return m
 }
 
@@ -106,6 +111,7 @@ func MarkdownPhoto(photo string, caption string) MessageStruct {
 func MarkdownPhotoToChat(photo string, caption string, chatID int64) MessageStruct {
 	m := MarkdownPhoto(photo, caption)
 	m.ChatID = chatID
+
 	return m
 }
 
