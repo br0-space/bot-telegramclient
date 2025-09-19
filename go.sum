@@ -1,13 +1,3 @@
-github.com/br0-space/bot-logger v0.0.0-20230327235701-9b76b3d387c8 h1:NIh3F9IV+7ER4FLno1l3vYiR/qB/nfAhKEQtNlUXByo=
-github.com/br0-space/bot-logger v0.0.0-20230327235701-9b76b3d387c8/go.mod h1:b0Bh0Qe0Ss15kKLh76GQKkPq7qyH/Uo7+MM2rQAvcgI=
-github.com/br0-space/bot-logger v0.0.0-20230528034653-b8182586cff5 h1:wQB20LLAwFQFsroLIPbgyM+46MqC39oRRhgghrHJXu8=
-github.com/br0-space/bot-logger v0.0.0-20230528034653-b8182586cff5/go.mod h1:b0Bh0Qe0Ss15kKLh76GQKkPq7qyH/Uo7+MM2rQAvcgI=
-github.com/br0-space/bot-logger v0.1.0 h1:1eBjueIp+LUeXCFZoPslE657yDr1NF6Dej/XqaibfD8=
-github.com/br0-space/bot-logger v0.1.0/go.mod h1:b0Bh0Qe0Ss15kKLh76GQKkPq7qyH/Uo7+MM2rQAvcgI=
-github.com/br0-space/bot-logger v0.1.1 h1:TzuQSLpSCwqfJf2alKNXJdhI3JNKTSdUyinVAVUgKlw=
-github.com/br0-space/bot-logger v0.1.1/go.mod h1:b0Bh0Qe0Ss15kKLh76GQKkPq7qyH/Uo7+MM2rQAvcgI=
-github.com/br0-space/bot-logger v0.1.2 h1:k38Do9A9oQFcP05W0CWbJyyZJDhvO9+fkSGi3HNLV1M=
-github.com/br0-space/bot-logger v0.1.2/go.mod h1:b0Bh0Qe0Ss15kKLh76GQKkPq7qyH/Uo7+MM2rQAvcgI=
 github.com/br0-space/bot-logger v0.1.3 h1:pkf7bQwsI3hbIuJZfxRVG/l9/n/7gWRCvu0wxvKMnCA=
 github.com/br0-space/bot-logger v0.1.3/go.mod h1:FOUFZRX9zghjeo73+TDAcb/nS4b8l6SWlSpdh7ZRPBM=
 github.com/op/go-logging v0.0.0-20160315200505-970db520ece7 h1:lDH9UUVJtmYCjyT0CI4q8xvlXPxeZ0gYCVvWbmPlp88=
