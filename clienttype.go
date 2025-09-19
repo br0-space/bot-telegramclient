@@ -4,7 +4,7 @@ type ClientInterface interface {
 	SendMessage(chatID int64, messageOut MessageStruct) error
 }
 
-// Create a struct that is accepted by Telegram's sendMessage endpoint
+// Create a struct accepted by Telegram's sendMessage endpoint
 // https://core.telegram.org/bots/api#sendmessage
 
 type MessageStruct struct {

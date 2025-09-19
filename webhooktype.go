@@ -44,7 +44,7 @@ func (m WebhookMessageStruct) WordCount() int {
 	// Match non-space character sequences.
 	re := regexp.MustCompile(`\S+`)
 
-	// Find all matches and return count.
+	// Find all matches and return the count.
 	results := re.FindAllString(m.TextOrCaption(), -1)
 
 	return len(results)
